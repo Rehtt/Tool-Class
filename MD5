@@ -27,3 +27,4 @@ public static String MD5(String inStr){
         return hexValue.toString();  
   
     }  
+ 
