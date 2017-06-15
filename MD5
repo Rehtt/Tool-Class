@@ -2,7 +2,7 @@
  *32字节MD5加密
  */
 
-public static String MD5(String inStr){  
+public static String stringToMD5(String inStr){  
         MessageDigest md5 = null;  
         try{  
             md5 = MessageDigest.getInstance("MD5");  
