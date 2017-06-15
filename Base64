@@ -1,0 +1,117 @@
+
+public class Conversion {
+    static String Base64S="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvw``1xyz0123456789+/";
+    char[] Base64C=Base64S.toCharArray();
+
+
+/*
+ *Base64加密
+ */
+    public static String byteArrayToBase64String(byte[] srcStr) {
+        if(srcStr == null || srcStr.length == 0) {
+
+        }
+//        char[] srcStrCh= srcStr.toCharArray();
+        StringBuilder asciiBinStrB= new StringBuilder();
+        String asciiBin= null;
+        for(int i= 0; i< srcStr.length; i++) {
+            asciiBin= Integer.toBinaryString((int)srcStr[i]);
+            while(asciiBin.length()< 8) {
+                asciiBin= "0"+ asciiBin;
+            }
+            asciiBinStrB.append(asciiBin);
+        }
+        while(asciiBinStrB.length()% 6!= 0) {
+            asciiBinStrB.append("0");
+        }
+        String asciiBinStr= String.valueOf(asciiBinStrB);
+        char[] codeCh= new char[asciiBinStr.length()/ 6];
+        char[] charq=asciiBinStr.toCharArray();
+        String qwe="";
+        int q=0;
+        String[] op=null;
+        for(int i=0;i<asciiBinStr.length();i++){
+            if(i>0){
+                if(i%4==0&&i%8!=0)
+                    System.out.print(",");
+                if(i%8==0)
+                    System.out.print(" ");
+            }
+            System.out.print(charq[i]);
+
+
+
+        }
+
+        int index= 0;
+        for(int i= 0; i< codeCh.length; i++) {
+            index= Integer.parseInt(asciiBinStr.substring(0, 6), 2);
+            asciiBinStr= asciiBinStr.substring(6);
+            codeCh[i]= Base64S.charAt(index);
+        }
+        StringBuilder code= new StringBuilder(String.valueOf(codeCh));
+        if(srcStr.length% 3 == 1) {
+            code.append("==");
+        } else if(srcStr.length% 3 == 2) {
+            code.append("=");
+        }
+//	        int i= 76;
+//	        while(i< code.length()) {
+//	            code.insert(i, "\r\n");
+//	            i+= 76;
+//	        }
+        code.append("\r\n");
+        return String.valueOf(code);
+    }
+    
+    
+    
+    
+    
+    /*
+     *Base64解密
+     */
+     
+    public byte[] base64StringToByteArray(String s){
+        char[] chars=s.toCharArray();
+        for(char ch:chars)
+            if(ch=='=')
+                ch=' ';
+        String s1="";
+        for(int j=0;j<chars.length;j++) {
+            for (int i = 0; i < Base64C.length; i++) {
+                if (Base64C[i] == chars[j]) {
+                    s1+=Integer.toBinaryString(i);
+
+
+                }
+            }
+        }
+
+        char[] q=s1.toCharArray();
+        String strings ="";
+        String z="";
+
+
+        int j=0;
+        for(int i=0;i<s1.length();i++){
+            if((i+1)%8!=0){
+
+                strings+=q[i];
+
+
+            }
+            else {
+
+                z+=Integer.valueOf((strings),2).toString()+",";
+                strings="";
+
+
+            }
+        }
+
+        byte[] bytes=z.getBytes();
+        return bytes ;
+    }
+
+}
