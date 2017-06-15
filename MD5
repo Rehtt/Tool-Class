@@ -1,5 +1,5 @@
 /*
- *MD5加密
+ *32字节MD5加密
  */
 
 public static String MD5(String inStr){  
