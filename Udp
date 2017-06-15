@@ -1,0 +1,51 @@
+/*
+ *Udp发送
+ */
+final static int SENDPORT=7000;
+	    final static int RECEIVPORT=7894;//接收端口
+	public static void main(String args[]) throws Exception{
+	   
+	    
+
+//	        Message message=new Message();
+//	        new Sender(message).start();
+	        String destID="10.134.18.23";//输入目标ip
+	       
+				
+			
+	        
+	        try {
+	        	DatagramSocket s=new DatagramSocket(SENDPORT);
+	            ByteArrayOutputStream byteArrayOutputStream=new ByteArrayOutputStream(500);
+	            ObjectOutputStream objectOutputStream=new ObjectOutputStream(new BufferedOutputStream(byteArrayOutputStream));
+	            objectOutputStream.writeObject("bbbgbgfbdggbdfgbdf");//发送内容
+	            objectOutputStream.flush();
+	            byte[] sengBuf=byteArrayOutputStream.toByteArray();
+
+
+	            objectOutputStream.close();
+	            s.send(  new DatagramPacket(sengBuf,sengBuf.length, InetAddress.getByName(destID),RECEIVPORT));
+	            s.close();
+	            
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+}
+
+
+
+/*
+ *Udp接收
+ */
+public static void main(String[] args) throws Exception {
+        for(;;){
+        byte [] buf = new byte[1024];
+        
+        DatagramSocket ds = new DatagramSocket(7894);
+        DatagramPacket dp = new DatagramPacket(buf,1024);
+        System.out.println("等待接受数据···");
+        ds.receive(dp);
+        String str = new String (dp.getData(),0,dp.getLength());
+        System.out.println(str);
+        ds.close();}
+}
