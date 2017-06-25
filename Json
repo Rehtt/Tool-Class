@@ -7,7 +7,7 @@ public class json {
         }
         
         int j=0;
-        String re="";
+        String re=null;
         for (String i:arrayList){
             if(i.equals(content)){
                 re= arrayList.get(j+2)+","+re;
