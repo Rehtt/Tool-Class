@@ -1,0 +1,20 @@
+public class json {
+    public String json (String str, String content){
+        String[] a=str.split("\\{|\\\"|\\:|\\,|\\}");
+        ArrayList<String> arrayList=new ArrayList<>();
+        for (String i:a){
+            arrayList.add(i);
+        }
+        
+        int j=0;
+        String re="";
+        for (String i:arrayList){
+            if(i.equals(content)){
+                re= arrayList.get(j+2)+","+re;
+            }
+            j++;
+        }
+        if(re!=null)
+        return re;
+        return "NULL";
+    }
