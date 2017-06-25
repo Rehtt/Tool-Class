@@ -7,14 +7,14 @@ public class json {
         }
         
         int j=0;
-        String re=null;
+        String re="";
         for (String i:arrayList){
             if(i.equals(content)){
-                re= arrayList.get(j+2)+","+re;
+                re= arrayList.get(j+3)+","+re;
             }
             j++;
         }
-        if(re!=null)
+        if(re!="")
         return re;
         return "NULL";
     }
