@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+
+<body>
+    <center>
+        <div id="1">
+            <a>
+                <pre>
+    .-"      "-.
+    /            \
+   |              |
+   |,  .-.  .-.  ,|
+   | )(__/  \__)( |
+   |/     /\     \|
+   (_     ^^     _)
+    \__|IIIIII|__/
+    |-\IIIIII/-|
+    \          /
+     `--------`
+</pre>
+            </a>
+        </div>
+        <div id="2">
+            <a>
+                <pre>
+    .-"      "-.
+    /            \
+   |              |
+   |,  .-.  .-.  ,|
+   | )(__/  \__)( |
+   |/     /\     \|
+   (_     ^^     _)
+    \__|IIIIII|__/
+    |          |
+    \-\IIIIII/-/
+     `--------`
+        </pre>
+            </a>
+        </div>
+    </center>
+
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<script type="text/javascript">
+
+                $('#2').css('display', 'block');
+                $('#1').css('display', 'none');
+        setInterval(function name(params) {
+            if ($('#1').css('display') == "none") {
+                $('#1').css('display', 'block');
+                $('#2').css('display', 'none');
+            }else{
+                $('#2').css('display', 'block');
+                $('#1').css('display', 'none');
+            }
+        }, 1000);
+
+</script>
+
+</html>
