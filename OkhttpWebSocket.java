@@ -28,50 +28,8 @@ public class OkhttpWebSocket{
                 .url(url)
                 .build();
     }
+    
     public void getMessage(final CallBack callBack){
-        webSocket = okHttpClient.newWebSocket(request, new WebSocketListener() {
-            @Override
-            public void onOpen(WebSocket webSocket, Response response) {
-                super.onOpen(webSocket, response);
-            }
-
-            @Override
-            public void onMessage(WebSocket webSocket, String text) {
-                Map<String, Object> map = new HashMap<>();
-                callBack.back(webSocket, new Object[]{"onMessage", text});
-                super.onMessage(webSocket, text);
-            }
-
-            @Override
-            public void onMessage(WebSocket webSocket, ByteString bytes) {
-                callBack.back(webSocket, new Object[]{"onMessage", String.valueOf(bytes)});
-                super.onMessage(webSocket, bytes);
-            }
-
-            @Override
-            public void onClosing(WebSocket webSocket, int code, String reason) {
-                callBack.back(webSocket, new Object[]{"onClosing", code, reason});
-                super.onClosing(webSocket, code, reason);
-            }
-
-            @Override
-            public void onClosed(WebSocket webSocket, int code, String reason) {
-                callBack.back(webSocket, new Object[]{"onClosed", code, reason});
-                super.onClosed(webSocket, code, reason);
-            }
-
-            @Override
-            public void onFailure(WebSocket webSocket, Throwable t, Response response) {
-                callBack.back(webSocket, new Object[]{"onFailure", t, response});
-                super.onFailure(webSocket, t, response);
-            }
-        });
-    }
-
-    public void myWebSockert(String url, final CallBack callBack) {
-        Request request = new Request.Builder()
-                .url(url)
-                .build();
         webSocket = okHttpClient.newWebSocket(request, new WebSocketListener() {
             @Override
             public void onOpen(WebSocket webSocket, Response response) {
